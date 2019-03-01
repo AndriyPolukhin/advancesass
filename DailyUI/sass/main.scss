@@ -1,346 +1,145 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-html,
 body {
-  min-height: 100%;
-  font-family: 'Open sans', sans-serif;
-}
-body {
-  background: linear-gradient(50deg, #f3c680, hsla(179,54%,76%,1));
-}
-
-
-/*--------------------
-Buttons
---------------------*/
-.btn {
-  display: block;
-  background: hsl(86, 76%, 71%);
-  color: hsl(0, 0, 100);
-  text-decoration: none;
-  margin: 20px 0;
-  padding: 15px 15px;
-  border-radius: 5px;
-  position: relative;
-
+  background: #eae8e9;
+  &::before,
   &::after {
     content: '';
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    height: 280px;
+    background-image: linear-gradient(-47deg, #656565 18%, #BBBBBB 33%, #757575 51%, #616161 66%, #C1C1C1 83%, #83837e 90%);
+    border-radius: 50%;
     z-index: 1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: all .2s ease-in-out;
-    box-shadow: inset 0 3px 0 hsla(0, 0, 0, 0), 0 3px 3px hsla(0, 0, 0, .2);
-    border-radius: 5px;
+    border: 2px solid #98989a;
+    box-shadow: 0 1px 12px 1px rgba(0, 0, 0, .26);
   }
-
-  &:hover::after {
-    background: hsla(0, 0, 0, 0.1);
-    box-shadow: inset 0 3px 0 hsla(0, 0, 0, 0.2);
-  }
-
-}
-
-/*--------------------
-Form
---------------------*/
-.form {
-
-  fieldset {
+  &::after {
+    background-image: linear-gradient(140deg, rgba(255, 255, 255, .29), rgba(255, 255, 255, .13) 37%, rgba(255, 255, 255, 0) 37.1%);
+    width: 247px;
+    height: 247px;
+    z-index: 4;
     border: none;
-    padding: 0;
-    padding: 10px 0;
-    position: relative;
-    clear: both;
-
-    &.fieldset-expiration {
-      float: left;
-      width: 60%;
-
-      & .select {
-        width: 84px;
-        margin-right: 12px;
-        float: left;
-      }
-    }
-
-    &.fieldset-ccv {
-      clear: none;
-      float: right;
-      width: 86px;
-    }
-
-    label {
-      display: block;
-      text-transform: uppercase;
-      font-size: 11px;
-      color: hsla(0, 0, 0, .6);
-      margin-bottom: 5px;
-      font-weight: bold;
-      font-family: Inconsolata;
-    }
-
-    input,
-    .select {
-      width: 100%;
-      height: 38px;
-      color: hsl(0, 0, 20);
-      padding: 10px;
-      border-radius: 5px;
-      font-size: 15px;
-      outline: none!important;
-      border: 1px solid hsla(0, 0, 0, 0.3);
-      box-shadow: inset 0 1px 4px hsla(0, 0, 0, 0.2);
-
-      &.input-cart-number {
-        width: 82px;
-        display: inline-block;
-        margin-right: 8px;
-
-        &:last-child {
-          margin-right: 0;
-        }
-      }
-    }
-
-    .select {
-      position: relative;
-
-      &::after {
-        content: '';
-        border-top: 8px solid #222;
-        border-left: 4px solid transparent;
-        border-right: 4px solid transparent;
-        position: absolute;
-        z-index: 2;
-        top: 14px;
-        right: 10px;
-        pointer-events: none;
-      }
-
-      select {
-        appearance: none;
-        position: absolute;
-        padding: 0;
-        border: none;
-        width: 100%;
-        outline: none!important;
-        top: 6px;
-        left: 6px;
-        background: none;
-
-        :-moz-focusring {
-          color: transparent;
-          text-shadow: 0 0 0 #000;
-        }
-
-      }
-    }
-
-
+    pointer-events: none;
   }
-
-  button {
-    width: 100%;
-    outline: none!important;
-    background: linear-gradient(180deg, #49a09b, #3d8291);
-    text-transform: uppercase;
-    font-weight: bold;
-    border: none;
-    box-shadow: none;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    margin-top: 90px;
-
-    & .fa {
-      margin-right: 6px;
-    }
-  }
-
 }
 
-/*--------------------
-Checkout
---------------------*/
-.checkout {
-  margin: 150px auto 30px;
-  position: relative;
-  width: 460px;
-  background: white;
-  border-radius: 15px;
-  padding: 160px 45px 30px;
-  box-shadow: 0 10px 40px hsla(0, 0, 0, .1);
-}
-
-/*--------------------
-Credit Card
---------------------*/
-.credit-card-box {
-  perspective: 1000;
-  width: 400px;
-  height: 280px;
+#slider {
   position: absolute;
-  top: -112px;
+  z-index: 2;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-
-  &:hover .flip,
-  &.hover .flip {
-    transform: rotateY(180deg);
-  }
-
-  .front,
-  .back {
-    width: 400px;
+  transform: translate(-50%, -50%);
+  font-family: Roboto, sans-serif;
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
     height: 250px;
-    border-radius: 15px;
-    backface-visibility: hidden;
-    background: linear-gradient(135deg, #bd6772, #53223f);
-    position: absolute;
-    color: #fff;
-    font-family: Inconsolata;
-    top: 0;
-    left: 0;
-    text-shadow: 0 1px 1px hsla(0, 0, 0, 0.3);
-    box-shadow: 0 1px 6px hsla(0, 0, 0, 0.3);
-
-    &::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      background: url('http://cdn.flaticon.com/svg/44/44386.svg') no-repeat center;
-      background-size: cover;
-      opacity: .05;
-    }
+    background: #000;
+    border-radius: 50%;
+    z-index: 1;
   }
-
-  .flip {
-    transition: 0.6s;
-    transform-style: preserve-3d;
-    position: relative;
-  }
-
-  .logo {
-    position: absolute;
-    top: 9px;
-    right: 20px;
-    width: 60px;
-
-    svg {
-      width: 100%;
-      height: auto;
-      fill: #fff;
-    }
-  }
-
-  .front {
+  &::after {
     z-index: 2;
-    transform: rotateY(0deg);
+    box-shadow: inset 0 0 5px #000;
+    background: linear-gradient(-190deg, rgba(255, 255, 255, .3), rgba(255, 255, 255, 0) 50%);
   }
+}
 
-  .back {
-    transform: rotateY(180deg);
+#animation1.rs-animation .rs-transition {
+  transition: all .1s ease-in-out;
+}
 
-    .logo {
-      top: 185px;
-    }
+.rs-gradient,
+.rs-gradient:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 170px;
+  height: 170px;
+  background: hsl(209, 100%, 42%);
+  box-shadow: inset 0 -2px 5px rgba(0, 0, 0, .2), inset 0 3px 5px rgba(0, 0, 0, .1), 0 0 3px #000;
+  border-radius: 50%;
+  z-index: 3;
+  opacity: .8
+}
 
-  }
+.rs-gradient:after {
+  background: linear-gradient(0, rgba(0, 0, 0, 0), rgba(0, 0, 0, .4));
+}
 
-  .chip {
-    position: absolute;
-    width: 60px;
-    height: 45px;
-    top: 20px;
-    left: 20px;
-    background: linear-gradient(135deg, hsl(269,54%,87%) 0%,hsl(200,64%,89%) 44%,hsl(18,55%,94%) 100%);
-    border-radius: 8px;
+.rs-path-color {
+  background: #444;
+}
 
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin: auto;
-      border: 4px solid hsla(0, 0, 50, .1);
-      width: 80%;
-      height: 70%;
-      border-radius: 5px;
-    }
-  }
+.rs-range-color {
+  background: #fff;
+  transition: background .02s ease-in-out;
+}
 
-  .strip {
-    background: linear-gradient(135deg, hsl(0, 0, 25%), hsl(0, 0, 10%));
-    position: absolute;
-    width: 100%;
-    height: 50px;
-    top: 30px;
-    left: 0;
-  }
+.rs-border {
+  border: 1px solid #000;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, .3);
+}
 
-  .number {
-    position: absolute;
-    margin: 0 auto;
-    top: 103px;
-    left: 19px;
-    font-size: 38px;
-  }
+.rs-seperator {
+  border: none;
+}
 
-  label {
-    font-size: 10px;
-    letter-spacing: 1px;
-    text-shadow: none;
-    text-transform: uppercase;
-    font-weight: normal;
-    opacity: 0.5;
-    display: block;
-    margin-bottom: 3px;
-  }
+.rs-control .rs-split .rs-path,
+.rs-control .rs-overlay1,
+.rs-control .rs-overlay2 {}
 
-  .card-holder,
-  .card-expiration-date {
-    position: absolute;
-    margin: 0 auto;
-    top: 180px;
-    left: 19px;
-    font-size: 22px;
-    text-transform: capitalize;
-  }
+.rs-border,
+.rs-bg-color {
+  background: #000;
+}
 
-  .card-expiration-date {
-    text-align: right;
-    left: auto;
-    right: 20px;
-  }
+.rs-tooltip-text {
+  font-family: Roboto, sans-serif;
+  font-size: 53px;
+  border-radius: 7px;
+  transition: background .02s ease-in-out;
+  color: #fff;
+  pointer-events: none;
+  transform: translateY(3px);
+}
 
-  .ccv {
-    height: 36px;
+.rs-tooltip-text:before {
+  position: absolute;
+  left: 3px;
+  top: -11px;
+  content: 'HEATING';
+  font-size: 12px;
+}
+
+.rs-handle {}
+
+.rs-handle {
+  background: none;
+  border: none;
+  background: none;
+  width: 60px;
+  height: 60px;
+  &::after {
     background: #fff;
-    width: 91%;
-    border-radius: 5px;
-    top: 110px;
-    left: 0;
-    right: 0;
-    position: absolute;
-    margin: 0 auto;
-    color: #000;
-    text-align: right;
-    padding: 10px;
-
-    label {
-      margin: -25px 0 14px;
-      color: #fff;
-    }
+    border-radius: 0;
+    border: none;
+    height: 1px;
+    width: 14px;
+    margin: 8px 0 0 3px;
   }
+}
 
-
+.rs-handle.rs-move {
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
 }
