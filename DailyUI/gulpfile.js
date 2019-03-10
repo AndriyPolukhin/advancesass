@@ -13,7 +13,7 @@ let paths = {
   },
 
   html: {
-    src: './index.html'
+    src: 'index.html'
   }
 };
 

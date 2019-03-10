@@ -1,0 +1,112 @@
+/*--------------------
+Change values below to
+generate your switch
+--------------------*/
+
+$width: 50px;
+$height: 80px;
+$radius: 12px;
+/*--------------------
+Mixins
+--------------------*/
+
+@mixin center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all .05s ease-in-out;
+}
+
+/*--------------------
+Body
+---------------------*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: 'Titillium Web', sans-serif;
+  background: #eee;
+}
+
+/*--------------------
+Switch
+--------------------*/
+
+[type="checkbox"] {
+  @include center;
+  width: $width;
+  height: $height;
+  z-index: 2;
+  opacity: 0.001;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  outline: none;
+  &~.switch {
+    @include center;
+    width: $width;
+    height: $height;
+    border-radius: $radius;
+    background: linear-gradient(to bottom, #d2d4d6, #fff);
+    box-shadow: inset 0 -2px 4px rgba(212, 205, 199, 0.75), inset 0 -8px 0 1px rgba(156, 156, 157, 0.85), 0 0 0 1px rgba(116, 116, 118, 0.8), 0 6px 6px rgba(41, 41, 41, 0.3), 0 0 0 4px #d4d7d8;
+    filter: contrast(1);
+    &::before,
+    &::after {
+      content: 'on';
+      position: absolute;
+      left: 0;
+      bottom: 11px;
+      color: rgba(0, 0, 0, .5);
+      font-size: 9px;
+      width: 100%;
+      text-align: center;
+      text-transform: uppercase;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
+      transition: all .05s ease-in-out;
+    }
+    &::after {
+      content: 'off';
+      bottom: auto;
+      top: 5px;
+      color: rgba(0, 0, 0, .45);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .4);
+    }
+  }
+  &:checked~.switch {
+    background: linear-gradient(to bottom, #a1a2a3, #f0f0f0);
+    box-shadow: inset 0 2px 4px rgba(212, 205, 199, 0.75), inset 0 8px 0 1px rgba(255, 255, 255, 0.77), 0 0 0 1px rgba(116, 116, 118, 0.8), 0 -2px 2px rgba(41, 41, 41, 0.18), 0 0 0 4px #d4d7d8;
+    filter: none;
+    &::before {
+      bottom: 3px;
+      color: rgba(0, 0, 0, .5);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+    }
+    &::after {
+      top: 13px;
+      color: rgba(0, 0, 0, .45);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .15);
+    }
+  }
+  &~.light {
+    background: #0a0a16;
+    opacity: 0.7;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 2;
+    box-shadow: inset 0 0 40vw rgba(0, 0, 0, 1);
+  }
+  &:checked~.light {
+    opacity: 0;
+  }
+}
