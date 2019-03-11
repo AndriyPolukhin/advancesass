@@ -1,0 +1,241 @@
+$depth: 10px;
+$width: 35px;
+$height: 90px;
+
+body {
+  min-height: 450px;
+  height: 100vh;
+  margin: 0;
+  background: radial-gradient(ellipse farthest-corner at center top, #6CEBCF 0%, #38a7aa 100%);
+  color: #404853;
+
+  font-family: 'Open Sans', sans-serif;
+}
+
+.stage {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  width: 400px;
+  height: 300px;
+  perspective: 9999px;
+  transform-style: preserve-3d;
+  transform: translate(-50%, -50%) rotateY(30deg) rotateX(25deg);
+
+  &.reset .chart {
+    .col {
+      height: 2px;
+    }
+  }
+}
+
+.table {
+  width: 510px;
+  position: absolute;
+  z-index: 1;
+  bottom: -38px;
+  left: -81px;
+  transform-style: preserve-3d;
+  background: linear-gradient(to bottom, #f5f8fc, #dce1eb);
+  padding: 20px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #429EA0;
+    transform: translateY(5px) translateZ(-20px);
+    z-index: 1;
+    filter: blur(10px);
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 24px;
+    margin: 0 0 5px;
+  }
+
+  div {
+
+    &::before, &::after {
+      content:'';
+      position: absolute;
+      width: $depth;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: linear-gradient(to bottom, #dcdfe3, #c5c9d1);
+      transform: rotateY(90deg);
+      transform-origin: 0 0;
+    }
+
+    &::after {
+      width: 100%;
+      height: $depth;
+      top: 100%;
+      left: 0;
+      background: linear-gradient(90deg, #B0B7BF, #B0B7BF);
+      transform: rotateX(-90deg);
+      transform-origin: 0 0;
+    }
+  }
+
+  table {
+
+    td, th {
+      font-size: 12px;
+      text-align: center;
+      height: 40px;
+      width: 60px;
+      vertical-align: bottom;
+    }
+
+    td {
+      border-bottom: 1px dashed hsla(177, 46%, 49%, 0.71);
+    }
+  }
+}
+
+.chart {
+  width: 99%;
+  height: 100%;
+  top: 0;
+  left: 9px;
+  position: absolute;
+  z-index: 2;
+  transform-style: preserve-3d;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  transform: translateZ(40px);
+  animation: rotate 5s infinite alternate ease-in-out -7.5s, o_O 0.1s 1;
+  animation-fill-mode: forwards;
+
+  .col {
+    width: $width;
+    height: $height;
+    background: linear-gradient(to bottom, #62e0c8, #39adad);
+    position: relative;
+    bottom: 0;
+    transform-style: preserve-3d;
+    transition: transform .2s ease-in-out, height .4s ease-in-out;
+    opacity: 0.7;
+
+    &::before, &::after {
+      content:'';
+      position: absolute;
+      width: $depth;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: linear-gradient(to bottom, #44dabe, #39ACAC);
+      transform: rotateY(90deg);
+      transform-origin: 0 0;
+    }
+
+    &::after {
+      width: 100%;
+      height: $depth;
+      top: 100%;
+      left: 0;
+      background: linear-gradient(to bottom, hsl(180, 46%, 39%), #329595);
+      transform: rotateX(-90deg);
+      transform-origin: 0 0;
+    }
+
+    &:nth-child(2) {
+      transition-delay: .2s;
+      height: 130px;
+    }
+
+    &:nth-child(3) {
+      transition-delay: .4s;
+      height: 180px;
+    }
+
+    &:nth-child(4) {
+      transition-delay: .6s;
+      height: 145px;
+    }
+
+    &:nth-child(5) {
+      transition-delay: .8s;
+      height: 195px;
+    }
+
+    &:nth-child(6) {
+      transition-delay: 1s;
+      height: 65px;
+    }
+
+    &:nth-child(7) {
+      transition-delay: 1.2s;
+      height: 120px;
+    }
+
+    & div {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: #fff;
+      opacity: .3;
+      transform: translateZ(-$depth);
+        transform-style: preserve-3d;
+
+        &::before, &::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: #07B990;
+          opacity: 1;
+          filter: blur(5px);
+          transform: translateX(-3px) translateY(2px) translateZ(-8px);
+          transition: all .3s ease-in-out;
+          }
+    }
+
+    &:hover {
+      transform: translateZ(8px);
+      transition-delay: 0s;
+
+      & div {
+        &::before, &::after {
+          transform: translateX(-3px) translateY(2px) translateZ(-12px);
+        }
+      }
+    }
+
+  }
+
+}
+
+.reload {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: #fff;
+  border-radius: 20px;
+  font-size: 11px;
+  line-height: 1.5;
+  padding: 8px 12px;
+  text-transform: uppercase;
+  z-index: 10;
+  cursor: pointer;
+  box-shadow: 0 6px 7px #31A09E;
+
+  svg {
+    vertical-align: middle;
+    position: relative;
+    top: -2px;
+  }
+}
+
